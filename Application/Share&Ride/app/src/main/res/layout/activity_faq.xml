@@ -30,6 +30,7 @@
         android:visibility="gone"
         android:text="In order to book a ride both person (one who posted the ride and another looking for a ride) need to verify by registering via NSU email ID, NSU ID number, uploading a photograph and providing a picture of the NSU ID card. Also the user needs to provide their phone number which will only be shown to each other after you book a ride.
 "
+        android:layout_weight="1"
         />
     <TextView
         android:id="@+id/question2"
@@ -48,6 +49,7 @@
         android:visibility="gone"
         android:text="In Share and Ride, each user sets their own ride price. If the user is riding via private car, the owner of the private car or motorbike can set his/ her desired amount based on the length of the trip, fuel or CNG cost etc. In case of rickshaw or CNG, once the rickshaw puller or CNG driver sets the price, the users can calculate the amount each have to pay via Share and Ride app calculator.
 "
+        android:layout_weight="1"
         />
     <TextView
         android:id="@+id/question3"
@@ -66,7 +68,7 @@
         android:visibility="gone"
         android:text="Each ride includes the name of the user, his or her photograph, contact details, and the type of vehicle he or she will ride on. We highly recommend contacting the user before the ride to make sure you know exactly where and when the ride begins. There is a chat box where you can chat with the user and also call the user if needed.
 "
-        />
+        android:layout_weight="1"/>
     <TextView
         android:id="@+id/question4"
         android:layout_width="wrap_content"
@@ -84,7 +86,7 @@
         android:visibility="gone"
         android:text="At any point until the ride time you may cancel your ride just by clicking “Cancel” in the ride details page. That said, it is recommended that, if you must cancel the ride, please do so as far in advance as you can so the user can accept other ride requests.
 "
-        />
+        android:layout_weight="1"/>
     <TextView
         android:id="@+id/question5"
         android:layout_width="wrap_content"
@@ -102,6 +104,6 @@
         android:visibility="gone"
         android:text="You can do so within the ride details. For a recurring ride, you can choose to edit a particular ride only or apply the change to all such rides.
 "
-        />
+        android:layout_weight="1"/>
 
 </LinearLayout>
