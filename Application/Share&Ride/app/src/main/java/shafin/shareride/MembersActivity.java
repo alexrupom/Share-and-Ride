@@ -144,7 +144,8 @@ public class MembersActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent=new Intent(MembersActivity.this,ToolActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
