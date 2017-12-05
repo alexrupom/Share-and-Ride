@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "748421573509",
+    "firebase_url": "https://shareride-75bcd.firebaseio.com",
+    "project_id": "shareride-75bcd",
+    "storage_bucket": "shareride-75bcd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748421573509:android:b62752acea7f20a0",
+        "android_client_info": {
+          "package_name": "shafin.shareride"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748421573509-qkciksp9sdoarhu6o5kc5i9rqf8u03hn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "shafin.shareride",
+            "certificate_hash": "c24f3f6ef4c7335a28f3beac0631b9de82e5a83c"
+          }
+        },
+        {
+          "client_id": "748421573509-2vk5ciakb4ltock85ln0gpcf24647nk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGz9hCmt5dC40D5BDrm7kWYTq5WxhIxvU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748421573509-2vk5ciakb4ltock85ln0gpcf24647nk8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
