@@ -3,14 +3,105 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp">
 
 
-    <ListView
-        android:id="@+id/listViewArtists"
-        android:layout_width="match_parent"
+
+
+
+    <TextView
+        android:id="@+id/question1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1">
+        android:text="1.	How do you verify the users in the app?
+"
+        android:clickable="true"
+        android:layout_weight="1"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:id="@+id/answer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="In order to book a ride both person (one who posted the ride and another looking for a ride) need to verify by registering via NSU email ID, NSU ID number, uploading a photograph and providing a picture of the NSU ID card. Also the user needs to provide their phone number which will only be shown to each other after you book a ride.
+"
+        />
+    <TextView
+        android:id="@+id/question2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2.	How is the ride price set?
+"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20dp"
+        android:clickable="true"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/answer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="In Share and Ride, each user sets their own ride price. If the user is riding via private car, the owner of the private car or motorbike can set his/ her desired amount based on the length of the trip, fuel or CNG cost etc. In case of rickshaw or CNG, once the rickshaw puller or CNG driver sets the price, the users can calculate the amount each have to pay via Share and Ride app calculator.
+"
+        />
+    <TextView
+        android:id="@+id/question3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.	How to recognize the user with whom I will share my ride?
+"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20dp"
+        android:clickable="true"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/answer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Each ride includes the name of the user, his or her photograph, contact details, and the type of vehicle he or she will ride on. We highly recommend contacting the user before the ride to make sure you know exactly where and when the ride begins. There is a chat box where you can chat with the user and also call the user if needed.
+"
+        />
+    <TextView
+        android:id="@+id/question4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.	If something comes up, can I cancel a ride?
+"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20dp"
+        android:clickable="true"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/answer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="At any point until the ride time you may cancel your ride just by clicking “Cancel” in the ride details page. That said, it is recommended that, if you must cancel the ride, please do so as far in advance as you can so the user can accept other ride requests.
+"
+        />
+    <TextView
+        android:id="@+id/question5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5.	If something comes up, can I cancel a ride?
+"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20dp"
+        android:clickable="true"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/answer5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="You can do so within the ride details. For a recurring ride, you can choose to edit a particular ride only or apply the change to all such rides.
+"
+        />
 
-    </ListView>
 </LinearLayout>
