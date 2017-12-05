@@ -70,6 +70,9 @@ public class ToolActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 saveUserinformation();
+                finish();
+                Intent intent=new Intent(ToolActivity.this,MembersActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -97,6 +100,8 @@ public class ToolActivity extends AppCompatActivity {
 
         UserInformation userInformation = new UserInformation(name,id,phone);
         FirebaseUser user=firebaseAuth.getCurrentUser();
+
+
         if (user !=null && profileImageURL!= null){
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(name).setPhotoUri(Uri.parse(profileImageURL)).build();
@@ -109,6 +114,7 @@ public class ToolActivity extends AppCompatActivity {
                 }
             });
         }
+
         databaseReference.child(user.getUid()).setValue(userInformation);
         Toast.makeText(this, "Information saved", Toast.LENGTH_SHORT).show();
     }

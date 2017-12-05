@@ -75,7 +75,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="to"
-            android:inputType="phone|text" />
+             />
 
         <EditText
             android:id="@+id/vehicle"
