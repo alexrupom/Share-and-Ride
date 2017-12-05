@@ -1,6 +1,7 @@
 package shafin.shareride;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -70,7 +71,10 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                 progressDialog.dismiss();
               if (task.isSuccessful()){
 
+                  finish();
                   Toast.makeText(getApplicationContext(), "User is successfully registered", Toast.LENGTH_SHORT).show();
+                  Intent intent=new Intent(SigninActivity.this,LoginActivity.class);
+                  startActivity(intent);
               }
               else {
 

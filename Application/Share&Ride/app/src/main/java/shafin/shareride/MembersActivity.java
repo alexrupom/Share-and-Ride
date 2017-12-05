@@ -52,7 +52,11 @@ public class MembersActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
+                finish();
                 firebaseAuth.signOut();
+                Intent intent=new Intent(MembersActivity.this,LoginActivity.class);
+                startActivity(intent);
+
             }
         });
 
