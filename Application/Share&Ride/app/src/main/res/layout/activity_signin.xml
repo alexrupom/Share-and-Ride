@@ -17,13 +17,7 @@
 
 
 
-        <EditText
-            android:id="@+id/your_full_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Full Name"
-            android:inputType="textPersonName" />
+
 
 
 

@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        progressDialog.setMessage("Registering user...");
+        progressDialog.setMessage("Logging in...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
