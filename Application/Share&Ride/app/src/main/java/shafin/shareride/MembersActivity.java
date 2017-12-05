@@ -13,9 +13,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MembersActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    FirebaseAuth firebaseAuth;
+    TextView textViewemail;
+    Button logout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +33,28 @@ public class MembersActivity extends AppCompatActivity
         setContentView(R.layout.activity_members);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        textViewemail=(TextView)findViewById(R.id.email);
+        logout=(Button)findViewById(R.id.logout);
+        firebaseAuth= FirebaseAuth.getInstance();
+
+        if (firebaseAuth.getCurrentUser()==null){
+            finish();
+            Intent intent=new Intent(MembersActivity.this,LoginActivity.class);
+            startActivity(intent);
+
+        }
+
+        FirebaseUser user=firebaseAuth.getCurrentUser();
+        textViewemail.setText( user.getEmail());
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                firebaseAuth.signOut();
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -58,7 +58,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(this, "Email is empty", Toast.LENGTH_SHORT).show();
             return;
         }
-        else if (TextUtils.isEmpty(pass)){
+        if (TextUtils.isEmpty(pass)){
             Toast.makeText(this, "Password is empty", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -67,10 +67,15 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         firebaseAuth.createUserWithEmailAndPassword(emails,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                progressDialog.dismiss();
               if (task.isSuccessful()){
+
                   Toast.makeText(getApplicationContext(), "User is successfully registered", Toast.LENGTH_SHORT).show();
               }
-              else  Toast.makeText(getApplicationContext(), "User is not successfully registered", Toast.LENGTH_SHORT).show();
+              else {
+
+                  Toast.makeText(getApplicationContext(), "User is not successfully registered", Toast.LENGTH_SHORT).show();
+              }
             }
         });
     }
