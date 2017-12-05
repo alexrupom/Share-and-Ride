@@ -14,8 +14,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,6 +28,9 @@ public class MembersActivity extends AppCompatActivity
     FirebaseAuth firebaseAuth;
     TextView textViewemail;
     Button logout;
+    TextView textViewName,textViewID,textViewPhone;
+    ImageView imageView;
+
 
 
     @Override
@@ -35,6 +41,13 @@ public class MembersActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         textViewemail=(TextView)findViewById(R.id.email);
+        textViewName=(TextView)findViewById(R.id.name);
+        textViewID=(TextView)findViewById(R.id.id);
+        textViewPhone=(TextView)findViewById(R.id.phone);
+        imageView=(ImageView)findViewById(R.id.image);
+
+        loadUserInformation();
+
         logout=(Button)findViewById(R.id.logout);
         firebaseAuth= FirebaseAuth.getInstance();
 
@@ -77,6 +90,32 @@ public class MembersActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (firebaseAuth.getCurrentUser() == null){
+            finish();
+            Intent intent=new Intent(MembersActivity.this,LoginActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private void loadUserInformation() {
+
+
+       FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
+       if (user!=null){
+           if (user.getPhotoUrl()!=null){
+
+              Glide.with(this).load(user.getPhotoUrl() .toString()).into(imageView);
+              String photoUrl =user.getPhotoUrl().toString() ;
+           }
+           if (user.getDisplayName()!=null) {
+               textViewName.setText(user.getDisplayName());
+           }
+       }
     }
 
     @Override

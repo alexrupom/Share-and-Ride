@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
 
 public class SigninActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,6 +58,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
     private void registeruser() {
         String emails=email.getText().toString().trim();
         String pass=password.getText().toString().trim();
+
         if (TextUtils.isEmpty(emails)){
             Toast.makeText(this, "Email is empty", Toast.LENGTH_SHORT).show();
             return;
@@ -63,6 +67,20 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(this, "Password is empty", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(emails).matches()){
+            email.setError("Please enter a valid email");
+            email.requestFocus();
+            return;
+        }
+        if (pass.length()<6)
+        {
+            password.setError("Minimum length should be 6 ");
+            password.requestFocus();
+            return;
+        }
+
+
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
         firebaseAuth.createUserWithEmailAndPassword(emails,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
