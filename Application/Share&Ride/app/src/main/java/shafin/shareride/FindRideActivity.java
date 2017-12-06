@@ -42,6 +42,7 @@ TextView textView;
 
         listView = (ListView) findViewById(R.id.findride);
 
+
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         myRef = database.getReference("post");
 
@@ -50,18 +51,21 @@ TextView textView;
 //showing
         final List<PostInformation>messages=new LinkedList<>();
         final ArrayAdapter<PostInformation>adapter = new ArrayAdapter<PostInformation>(
-                this, android.R.layout.two_line_list_item, messages
+                this, android.R.layout.simple_list_item_2, messages
         ){
             @NonNull
             @Override
             public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
 
                 if (view == null){
-                    view=getLayoutInflater().inflate(android.R.layout.two_line_list_item, parent, false);
+                    view=getLayoutInflater().inflate(R.layout.twolines, parent, false);
                 }
                 PostInformation chat = messages.get(position);
-                ( (TextView) view.findViewById(android.R.id.text1)).setText("From: "+chat.getFrom());
-                ( (TextView) view.findViewById(android.R.id.text2)).setText("To: "+chat.getTo());
+                ( (TextView) view.findViewById(R.id.line_a)).setText("From: "+chat.getFrom());
+                ( (TextView) view.findViewById(R.id.line_b)).setText("To: "+chat.getTo());
+                ( (TextView) view.findViewById(R.id.line_c)).setText("Time: "+chat.getTime());
+                ( (TextView) view.findViewById(R.id.line_d)).setText("Vehicle: "+chat.getVehicle());
+                ( (TextView) view.findViewById(R.id.line_e)).setText("Posted by: "+chat.getId());
 
 
                 return view;}
@@ -69,6 +73,8 @@ TextView textView;
 
 
         listView.setAdapter(adapter );
+
+
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
