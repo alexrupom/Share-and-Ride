@@ -17,6 +17,7 @@ public class PostActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     EditText editTextFrom,editTextTo,editTextTime,editTextVehicle;
     Button button;
+    String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +68,10 @@ public class PostActivity extends AppCompatActivity {
             editTextVehicle.requestFocus();
             return;
         }
+        FirebaseUser user=firebaseAuth.getCurrentUser();
+        userid=user.getUid();
+        PostInformation postInformation = new PostInformation(from,to,time,vehicle,userid);
 
-        PostInformation postInformation = new PostInformation(from,to,time,vehicle);
-        //FirebaseUser user=firebaseAuth.getCurrentUser();
 
         databaseReference.push().setValue(postInformation);
         Toast.makeText(this, "Information posted", Toast.LENGTH_SHORT).show();

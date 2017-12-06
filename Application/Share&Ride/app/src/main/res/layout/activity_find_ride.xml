@@ -5,10 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="shafin.shareride.FindRideActivity">
+    tools:context="shafin.shareride.FindRideActivity"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+
 
     <ListView
         android:id="@+id/findride"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        />
+
 </LinearLayout>

@@ -5,20 +5,29 @@ package shafin.shareride;
  */
 
 public class PostInformation {
-    public String from,to,time,vehicle;
+    public String from,to,time,vehicle,id;
 
     public PostInformation() {
     }
 
-    public PostInformation(String from, String to, String time, String vehicle) {
+    public PostInformation(String from, String to, String time, String vehicle , String id) {
         this.from = from;
         this.to = to;
         this.time = time;
         this.vehicle = vehicle;
+        this.id = id;
     }
 
     public String getFrom() {
         return from;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTo() {
