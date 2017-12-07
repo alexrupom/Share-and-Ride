@@ -33,7 +33,7 @@ import java.io.IOException;
 public class ToolActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
-    EditText editTextName,editTextID,editTextPhone;
+    EditText editTextName,editTextUserName,editTextID,editTextPhone;
     Button button;
     FirebaseAuth firebaseAuth;
     ImageView imageView;
@@ -53,6 +53,7 @@ public class ToolActivity extends AppCompatActivity {
         firebaseAuth= FirebaseAuth.getInstance();
 
         editTextName=(EditText) findViewById(R.id.name);
+        editTextUserName=(EditText) findViewById(R.id.userName);
         editTextID=(EditText)findViewById(R.id.id);
         editTextPhone=(EditText)findViewById(R.id.phone);
 
@@ -88,6 +89,12 @@ public class ToolActivity extends AppCompatActivity {
             editTextName.requestFocus();
             return;
         }
+        String username=editTextUserName.getText().toString().trim();
+        if (username.isEmpty()){
+            editTextUserName.setError("Username required");
+            editTextUserName.requestFocus();
+            return;
+        }
         String id=editTextID.getText().toString().trim();
         if (id.isEmpty()){
             editTextID.setError("ID required");
@@ -107,7 +114,7 @@ public class ToolActivity extends AppCompatActivity {
 
         if (user !=null && profileImageURL!= null){
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
-                    .setDisplayName(name).setPhotoUri(Uri.parse(profileImageURL)).build();
+                    .setDisplayName(username).setPhotoUri(Uri.parse(profileImageURL)).build();
             user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

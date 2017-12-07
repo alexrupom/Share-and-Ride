@@ -1,5 +1,6 @@
 package shafin.shareride;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -80,5 +81,6 @@ public class PostActivity extends AppCompatActivity {
 
         databaseReference.setValue(postInformation);
         Toast.makeText(this, "Information posted", Toast.LENGTH_SHORT).show();
+
     }
 }
