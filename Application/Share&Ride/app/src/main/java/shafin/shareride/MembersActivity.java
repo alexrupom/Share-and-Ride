@@ -36,7 +36,7 @@ public class MembersActivity extends AppCompatActivity
     FirebaseAuth firebaseAuth;
     TextView textViewemail;
     Button logout;
-    TextView textViewName,textViewID,textViewPhone;
+    TextView textViewName,textViewUserName,textViewID,textViewPhone;
     ImageView imageView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -54,6 +54,7 @@ public class MembersActivity extends AppCompatActivity
 
         textViewemail=(TextView)findViewById(R.id.email);
         textViewName=(TextView)findViewById(R.id.name);
+        textViewUserName=(TextView)findViewById(R.id.username);
         textViewID=(TextView)findViewById(R.id.id);
         textViewPhone=(TextView)findViewById(R.id.phone);
         imageView=(ImageView)findViewById(R.id.image);
@@ -123,8 +124,10 @@ public class MembersActivity extends AppCompatActivity
                }
                String id=userinfo.getId();
                String phone=userinfo.getPhone();
+                String name=userinfo.getName();
                textViewPhone.setText("Phone: "+phone);
                textViewID.setText("ID: "+id);
+               textViewName.setText("Name: "+name);
                 //Toast.makeText(getApplicationContext(),"id is : "+id,Toast.LENGTH_SHORT).show();
 
             }
@@ -162,7 +165,7 @@ public class MembersActivity extends AppCompatActivity
               String photoUrl =user.getPhotoUrl().toString() ;
            }
            if (user.getDisplayName()!=null) {
-               textViewName.setText(user.getDisplayName());
+               textViewUserName.setText(user.getDisplayName());
            }
        }
     }

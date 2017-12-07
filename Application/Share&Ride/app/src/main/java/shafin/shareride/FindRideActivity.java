@@ -29,6 +29,8 @@ public class FindRideActivity extends AppCompatActivity {
     private static final String TAG = "FindRideActivity";
 ListView listView;
 TextView textView;
+String i;
+public static String name;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -43,8 +45,10 @@ TextView textView;
         listView = (ListView) findViewById(R.id.findride);
 
 
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        final FirebaseDatabase database=FirebaseDatabase.getInstance();
         myRef = database.getReference("post");
+
+
 
 
 
@@ -65,8 +69,37 @@ TextView textView;
                 ( (TextView) view.findViewById(R.id.line_b)).setText("To: "+chat.getTo());
                 ( (TextView) view.findViewById(R.id.line_c)).setText("Time: "+chat.getTime());
                 ( (TextView) view.findViewById(R.id.line_d)).setText("Vehicle: "+chat.getVehicle());
-                ( (TextView) view.findViewById(R.id.line_e)).setText("Posted by: "+chat.getId());
 
+
+                i=chat.getId().toString();
+                databaseReference= FirebaseDatabase.getInstance().getReference().child(i);
+
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                        UserInformation userinfo =dataSnapshot.getValue(UserInformation.class);
+
+                        if (userinfo==null){
+                            return;
+                        }
+                       name=userinfo.getName();
+
+                        Toast.makeText(getApplicationContext(),"Name is : "+name,Toast.LENGTH_SHORT).show();
+
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                        Log.w(TAG, "Failed to read value.", databaseError.toException());
+                    }
+                });
+
+                ( (TextView) view.findViewById(R.id.line_e)).setText("Poasted by: "+name);
 
                 return view;}
         };
@@ -81,6 +114,7 @@ TextView textView;
                 PostInformation chat = dataSnapshot.getValue(PostInformation.class);
                 messages.add(chat);
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -103,6 +137,8 @@ TextView textView;
 
             }
         });
+
+
     }
 
     private void toastMsg(String message){
