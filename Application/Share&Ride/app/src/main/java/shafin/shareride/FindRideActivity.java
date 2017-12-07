@@ -21,16 +21,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FindRideActivity extends AppCompatActivity {
     private static final String TAG = "FindRideActivity";
-ListView listView;
-TextView textView;
-String i;
-public static String name;
+    ListView listView;
+    TextView textView;
+    String i;
+    public static String name;
+
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -46,7 +48,7 @@ public static String name;
 
 
         final FirebaseDatabase database=FirebaseDatabase.getInstance();
-        myRef = database.getReference("post");
+        myRef = database.getReference("postRide");
 
 
 
@@ -69,7 +71,7 @@ public static String name;
                 ( (TextView) view.findViewById(R.id.line_b)).setText("To: "+chat.getTo());
                 ( (TextView) view.findViewById(R.id.line_c)).setText("Time: "+chat.getTime());
                 ( (TextView) view.findViewById(R.id.line_d)).setText("Vehicle: "+chat.getVehicle());
-
+                ( (TextView) view.findViewById(R.id.line_e)).setText("Poasted by: "+chat.getUserName());
 
                 i=chat.getId().toString();
                 databaseReference= FirebaseDatabase.getInstance().getReference().child(i);
@@ -84,9 +86,10 @@ public static String name;
                         if (userinfo==null){
                             return;
                         }
-                       name=userinfo.getName();
+                        name=userinfo.getName();
 
-                        Toast.makeText(getApplicationContext(),"Name is : "+name,Toast.LENGTH_SHORT).show();
+
+                        //Toast.makeText(getApplicationContext(),"Name is : "+name,Toast.LENGTH_SHORT).show();
 
 
 
@@ -99,7 +102,7 @@ public static String name;
                     }
                 });
 
-                ( (TextView) view.findViewById(R.id.line_e)).setText("Poasted by: "+name);
+
 
                 return view;}
         };

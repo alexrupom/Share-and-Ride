@@ -18,15 +18,18 @@ public class PostActivity extends AppCompatActivity {
     EditText editTextFrom,editTextTo,editTextTime,editTextVehicle;
     Button button;
     String userid;
+    FirebaseDatabase firebaseDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("post");
-
         firebaseAuth= FirebaseAuth.getInstance();
+        firebaseDatabase= FirebaseDatabase.getInstance();
+        final FirebaseUser user=firebaseAuth.getCurrentUser();
+        userid=user.getUid();
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("postRide").child(userid);
 
         editTextFrom=(EditText)findViewById(R.id.from);
         editTextTime=(EditText)findViewById(R.id.time);
@@ -70,10 +73,10 @@ public class PostActivity extends AppCompatActivity {
         }
         FirebaseUser user=firebaseAuth.getCurrentUser();
         userid=user.getUid();
-        PostInformation postInformation = new PostInformation(from,to,time,vehicle,userid);
+        PostInformation postInformation = new PostInformation(from,to,time,vehicle,userid,user.getDisplayName());
 
 
-        databaseReference.push().setValue(postInformation);
+        databaseReference.setValue(postInformation);
         Toast.makeText(this, "Information posted", Toast.LENGTH_SHORT).show();
     }
 }

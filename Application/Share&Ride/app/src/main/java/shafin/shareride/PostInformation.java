@@ -5,17 +5,27 @@ package shafin.shareride;
  */
 
 public class PostInformation {
-    public String from,to,time,vehicle,id;
+    public String from,to,time,vehicle,id,userName;
 
     public PostInformation() {
     }
 
-    public PostInformation(String from, String to, String time, String vehicle , String id) {
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public PostInformation(String from, String to, String time, String vehicle , String id, String userName) {
         this.from = from;
         this.to = to;
         this.time = time;
         this.vehicle = vehicle;
         this.id = id;
+        this.userName = userName;
+
     }
 
     public String getFrom() {
