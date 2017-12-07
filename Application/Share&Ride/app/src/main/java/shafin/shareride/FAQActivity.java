@@ -1,6 +1,7 @@
 package shafin.shareride;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ public class FAQActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         answer1=(TextView)findViewById(R.id.answer1) ;
         answer2=(TextView)findViewById(R.id.answer2);
