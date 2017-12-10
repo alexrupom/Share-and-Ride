@@ -19,7 +19,8 @@
             android:text="Give your Feedback."
             android:textSize="30dp"
             android:gravity="center"
-            android:textColor="@android:color/holo_green_light" />
+            android:textColor="@android:color/holo_green_light"
+            android:layout_weight="1"/>
         <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
@@ -28,6 +29,7 @@
             android:inputType="textPersonName"
             android:hint="give your feedback"
             android:layout_weight="1"
+            android:background="#FFF1CA"
             />
 
         <Button
@@ -38,6 +40,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:textColor="@android:color/white"
 
             android:background="@android:color/holo_blue_light"/>
         <TextView

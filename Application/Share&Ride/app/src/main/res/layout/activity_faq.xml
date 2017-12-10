@@ -51,6 +51,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:background="#FFF1CA"
         />
     <TextView
         android:id="@+id/question2"
@@ -77,6 +78,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:background="#FFF1CA"
         />
     <TextView
         android:id="@+id/question3"
@@ -102,7 +104,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:background="#FFF1CA"/>
     <TextView
         android:id="@+id/question4"
         android:layout_width="wrap_content"
@@ -127,7 +130,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:background="#FFF1CA"/>
     <TextView
         android:id="@+id/question5"
         android:layout_width="wrap_content"
@@ -152,7 +156,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:background="#FFF1CA"/>
 
 
 

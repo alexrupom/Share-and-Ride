@@ -45,7 +45,8 @@
                 android:layout_alignBottom="@+id/from"
                 android:layout_alignParentLeft="true"
                 android:text="From"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/holo_blue_dark"/>
 
             <TextView
                 android:id="@+id/textvievto"
@@ -53,8 +54,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/to"
                 android:layout_alignLeft="@+id/textView1"
-                android:text="to"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:text="To"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/holo_blue_dark"/>
 
             <EditText
                 android:id="@+id/time"
@@ -76,8 +78,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/time"
                 android:layout_alignRight="@+id/textView1"
-                android:text="time"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:text="Time"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/holo_blue_dark"/>
 
             <EditText
                 android:id="@+id/to"
@@ -123,7 +126,8 @@
                 android:layout_alignBottom="@+id/vehicle"
                 android:layout_alignLeft="@+id/textView2"
                 android:text="Vehicle"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/holo_blue_dark"/>
 
         </RelativeLayout>
     </LinearLayout>

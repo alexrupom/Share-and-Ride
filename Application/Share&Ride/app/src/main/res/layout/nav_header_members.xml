@@ -18,8 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/scopy"
-        />
+        app:srcCompat="@drawable/scopy" />
 
     <TextView
         android:layout_width="match_parent"
@@ -27,13 +26,13 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Share&amp;Ride"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:textColor="@android:color/holo_green_light"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="www.shareandride.com"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:textColor="@android:color/holo_green_light"/>
 
 </LinearLayout>
