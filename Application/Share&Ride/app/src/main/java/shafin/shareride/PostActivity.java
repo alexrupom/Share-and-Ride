@@ -15,12 +15,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class PostActivity extends AppCompatActivity {
-    DatabaseReference databaseReference;
+
     FirebaseAuth firebaseAuth;
     EditText editTextFrom,editTextTo,editTextTime,editTextVehicle;
     Button button;
     String userid;
     FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

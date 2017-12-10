@@ -1,5 +1,6 @@
 package shafin.shareride;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +34,9 @@ public class FindRideActivity extends AppCompatActivity {
     ListView listView;
     TextView textView;
     String i;
+    Button buttonAddnow;
     public static String name;
+
 
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
@@ -47,10 +51,12 @@ public class FindRideActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         listView = (ListView) findViewById(R.id.findride);
+        buttonAddnow=(Button)findViewById(R.id.addnow);
 
 
         final FirebaseDatabase database=FirebaseDatabase.getInstance();
         myRef = database.getReference("postRide");
+
 
 
 
@@ -68,12 +74,33 @@ public class FindRideActivity extends AppCompatActivity {
                 if (view == null){
                     view=getLayoutInflater().inflate(R.layout.twolines, parent, false);
                 }
-                PostInformation chat = messages.get(position);
+                final PostInformation chat = messages.get(position);
                 ( (TextView) view.findViewById(R.id.line_a)).setText("From: "+chat.getFrom());
                 ( (TextView) view.findViewById(R.id.line_b)).setText("To: "+chat.getTo());
                 ( (TextView) view.findViewById(R.id.line_c)).setText("Time: "+chat.getTime());
                 ( (TextView) view.findViewById(R.id.line_d)).setText("Vehicle: "+chat.getVehicle());
                 ( (TextView) view.findViewById(R.id.line_e)).setText("Poasted by: "+chat.getUserName());
+                ( (Button  ) view.findViewById(R.id.addnow)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String chatname=chat.getUserName()+", has created the post. \nFrom: "+chat.getFrom()+" To: "+chat.getTo()+"\nat "+chat.getTime()+" using "+chat.getVehicle();
+                        String id=chat.getId();
+                        Toast.makeText(getApplicationContext(),chat.getUserName(),Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(FindRideActivity.this, ChatActivity.class);
+                        //Create the bundle
+                        Bundle bundle = new Bundle();
+                        Bundle b = new Bundle();
+                        //Add your data to bundle
+                        bundle.putString("chatname", chatname);
+                        b.putString("id",id);
+
+                        //Add the bundle to the intent
+                        i.putExtras(bundle);
+                        i.putExtras(b);
+                        startActivity(i);
+                    }
+                });;
+
 
                 i=chat.getId().toString();
                 databaseReference= FirebaseDatabase.getInstance().getReference().child(i);
@@ -91,7 +118,8 @@ public class FindRideActivity extends AppCompatActivity {
                         name=userinfo.getName();
 
 
-                        //Toast.makeText(getApplicationContext(),"Name is : "+name,Toast.LENGTH_SHORT).show();
+
+
 
 
 
@@ -146,8 +174,7 @@ public class FindRideActivity extends AppCompatActivity {
 
     }
 
-    private void toastMsg(String message){
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    private void messageShow() {
     }
 
 
