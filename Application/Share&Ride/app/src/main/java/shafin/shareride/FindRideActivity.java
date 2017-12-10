@@ -85,7 +85,7 @@ public class FindRideActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         String chatname=chat.getUserName()+", has created the post. \nFrom: "+chat.getFrom()+" To: "+chat.getTo()+"\nat "+chat.getTime()+" using "+chat.getVehicle();
                         String id=chat.getId();
-                        Toast.makeText(getApplicationContext(),chat.getUserName(),Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(),chat.getUserName(),Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(FindRideActivity.this, ChatActivity.class);
                         //Create the bundle
                         Bundle bundle = new Bundle();

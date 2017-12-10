@@ -33,7 +33,7 @@ public class ChatActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     String userid;
     EditText editTextMessageArea;
-
+Button del;
     ImageView imageViewSendButton;
     ListView listView;
 
@@ -63,6 +63,7 @@ public class ChatActivity extends AppCompatActivity {
         imageViewSendButton=(ImageView)findViewById(R.id.sendButton);
         editTextMessageArea=(EditText)findViewById(R.id.messageArea);
         listView=(ListView)findViewById(R.id.listview);
+        del=(Button)findViewById(R.id.delete);
 
         imageViewSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +78,8 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 //showing
         final List<ChatMessage> messages=new LinkedList<>();
@@ -93,7 +96,8 @@ public class ChatActivity extends AppCompatActivity {
                 ChatMessage chat = messages.get(position);
                 ( (TextView) view.findViewById(android.R.id.text1)).setText(chat.getName());
                 ( (TextView) view.findViewById(android.R.id.text2)).setText(chat.getMessage());
-                return view;}
+                return view;
+            }
         };
 
 
@@ -113,6 +117,9 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+                String key = dataSnapshot.getKey();
+
+
 
             }
 
@@ -126,6 +133,18 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
+
+        if (id.equals(user.getUid())) {
+            del.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    databaseReference.setValue(null);
+                    recreate();//refresh the activity
+                }
+            });
+        }
+        else del.setVisibility(View.GONE);
+
     }
 
 
