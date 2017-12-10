@@ -55,7 +55,7 @@ public class ChatActivity extends AppCompatActivity {
         firebaseDatabase= FirebaseDatabase.getInstance();
         final FirebaseUser user=firebaseAuth.getCurrentUser();
         userid=user.getUid();
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("postRide").child(id);
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("chat").child(id);
 
         imageViewSendButton=(ImageView)findViewById(R.id.sendButton);
         editTextMessageArea=(EditText)findViewById(R.id.messageArea);
@@ -75,10 +75,58 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+//showing
+        final List<ChatMessage> messages=new LinkedList<>();
+        final ArrayAdapter<ChatMessage> adapter = new ArrayAdapter<ChatMessage>(
+                this, android.R.layout.two_line_list_item, messages
+        ){
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
+
+                if (view == null){
+                    view=getLayoutInflater().inflate(android.R.layout.two_line_list_item, parent, false);
+                }
+                ChatMessage chat = messages.get(position);
+                ( (TextView) view.findViewById(android.R.id.text1)).setText(chat.getName());
+                ( (TextView) view.findViewById(android.R.id.text2)).setText(chat.getMessage());
+                return view;}
+        };
 
 
+        listView.setAdapter(adapter );
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                ChatMessage chat = dataSnapshot.getValue(ChatMessage.class);
+                messages.add(chat);
+                adapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
+
+
+
+
 
 }
