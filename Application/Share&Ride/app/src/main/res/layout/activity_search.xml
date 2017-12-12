@@ -10,7 +10,13 @@
     >
 
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sorry no post found. Make a new post."
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:visibility="gone" />
 
     <ListView
         android:id="@+id/findride"
@@ -19,5 +25,14 @@
         android:layout_weight="1"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cant find post? Make a new one"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="20dp"
+        android:id="@+id/newpost"
+        android:clickable="true"/>
 
 </LinearLayout>

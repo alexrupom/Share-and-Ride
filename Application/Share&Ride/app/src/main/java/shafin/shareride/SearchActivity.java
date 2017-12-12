@@ -38,6 +38,7 @@ public class SearchActivity extends AppCompatActivity {
     String i;
     Button buttonAddnow;
     public static String name;
+    TextView  textViewNewPost;
 
 
     FirebaseAuth firebaseAuth;
@@ -59,6 +60,7 @@ public class SearchActivity extends AppCompatActivity {
         editTextSearch=(EditText)findViewById(R.id.search);
         buttonSearch=(Button)findViewById(R.id.searchbutton);
         buttonAddnow=(Button)findViewById(R.id.addnow);
+        textViewNewPost=(TextView)findViewById(R.id.newpost);
 
 
         final FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -66,7 +68,14 @@ public class SearchActivity extends AppCompatActivity {
 
         showingFromDatabase();
 
+textViewNewPost.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(SearchActivity.this,PostActivity.class);
 
+        startActivity(intent);
+    }
+});
 
 
 
@@ -94,10 +103,14 @@ public class SearchActivity extends AppCompatActivity {
                 String search = searchitem.getString("searchitem");
 
                 final PostInformation chat = messages.get(position);
-                ( (TextView) view.findViewById(R.id.line_a)).setText("From: "+chat.getFrom());
+                String searchCaseinsensitive=search.toUpperCase();
+                String fromCaseinSensitive=chat.getFrom().toUpperCase();
+                String toCaseinSensitive=chat.getTo().toUpperCase();
 
-                if (search.equals(chat.getFrom()) || search.equals(chat.getTo())) {
-                    // Toast.makeText(getApplicationContext(),search,Toast.LENGTH_SHORT).show();
+
+                if (searchCaseinsensitive.equals(fromCaseinSensitive) || searchCaseinsensitive.equals(toCaseinSensitive)) {
+
+                    ((TextView) view.findViewById(R.id.line_a)).setText("From: "+chat.getFrom());
                     ((TextView) view.findViewById(R.id.line_b)).setText("To: " + chat.getTo());
                     ((TextView) view.findViewById(R.id.line_c)).setText("Time: " + chat.getTime());
                     ((TextView) view.findViewById(R.id.line_d)).setText("Vehicle: " + chat.getVehicle());
