@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,8 @@ public class FindRideActivity extends AppCompatActivity {
     private static final String TAG = "FindRideActivity";
     ListView listView;
     TextView textView;
+    EditText editTextSearch;
+    Button buttonSearch;
     String i;
     Button buttonAddnow;
     public static String name;
@@ -51,16 +54,23 @@ public class FindRideActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         listView = (ListView) findViewById(R.id.findride);
+        editTextSearch=(EditText)findViewById(R.id.search);
+        buttonSearch=(Button)findViewById(R.id.searchbutton);
         buttonAddnow=(Button)findViewById(R.id.addnow);
 
 
         final FirebaseDatabase database=FirebaseDatabase.getInstance();
         myRef = database.getReference("postRide");
 
+        showingFromDatabase();
+
+            //editTextSearch.addTextChangedListener();
 
 
 
+    }
 
+    private void showingFromDatabase() {
 
 //showing
         final List<PostInformation>messages=new LinkedList<>();
@@ -85,7 +95,7 @@ public class FindRideActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         String chatname=chat.getUserName()+", has created the post. \nFrom: "+chat.getFrom()+" To: "+chat.getTo()+"\nat "+chat.getTime()+" using "+chat.getVehicle();
                         String id=chat.getId();
-                       // Toast.makeText(getApplicationContext(),chat.getUserName(),Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(getApplicationContext(),chat.getUserName(),Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(FindRideActivity.this, ChatActivity.class);
                         //Create the bundle
                         Bundle bundle = new Bundle();
@@ -172,10 +182,16 @@ public class FindRideActivity extends AppCompatActivity {
         });
 
 
+
+
+
+
+
+
     }
 
-    private void messageShow() {
-    }
+
+
 
 
 }
