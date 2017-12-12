@@ -103,7 +103,7 @@ textViewNewPost.setOnClickListener(new View.OnClickListener() {
                 String search = searchitem.getString("searchitem");
 
                 final PostInformation chat = messages.get(position);
-                String searchCaseinsensitive=search.toUpperCase();
+                String searchCaseinsensitive=search.toUpperCase().trim();
                 String fromCaseinSensitive=chat.getFrom().toUpperCase();
                 String toCaseinSensitive=chat.getTo().toUpperCase();
 
