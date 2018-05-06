@@ -5,24 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="shafin.shareride.FindRideActivity"
     android:layout_marginLeft="10dp"
-    >
-
-
+   >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sorry no post found. Make a new post."
         android:textAlignment="center"
         android:textSize="30dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:id="@+id/noPostFound"/>
 
     <ListView
         android:id="@+id/findride"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
         />
 
     <TextView
@@ -34,5 +36,4 @@
         android:textSize="20dp"
         android:id="@+id/newpost"
         android:clickable="true"/>
-
 </LinearLayout>

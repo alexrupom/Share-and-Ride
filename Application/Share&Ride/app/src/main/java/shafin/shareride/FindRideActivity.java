@@ -55,13 +55,14 @@ public class FindRideActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.findride);
         editTextSearch=(EditText)findViewById(R.id.search);
         buttonSearch=(Button)findViewById(R.id.searchbutton);
-        buttonAddnow=(Button)findViewById(R.id.addnow);
+
 
 
         final FirebaseDatabase database=FirebaseDatabase.getInstance();
         myRef = database.getReference("postRide");
 
         showingFromDatabase();
+
 
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +74,8 @@ public class FindRideActivity extends AppCompatActivity {
                 }
                 else {
                     Intent intent=new Intent(FindRideActivity.this,SearchActivity.class);
+
+
                     //Create the bundle
                     Bundle searchitem = new Bundle();
                     //Add your data to bundle
@@ -82,6 +85,7 @@ public class FindRideActivity extends AppCompatActivity {
                     intent.putExtras(searchitem);
 
                     startActivity(intent);
+
                 }
             }
         });

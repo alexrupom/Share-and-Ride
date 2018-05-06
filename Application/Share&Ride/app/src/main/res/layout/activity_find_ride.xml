@@ -6,20 +6,60 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="shafin.shareride.FindRideActivity"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp">
+ >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="search here"
+                    android:id="@+id/search"
+                    android:drawableLeft="@android:drawable/ic_menu_search" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3">
+                <Button
+                    android:id="@+id/searchbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="search"
+                    android:background="@android:color/holo_blue_light"
+                    android:textColor="@android:color/white"
+                    android:textSize="40px"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+            </LinearLayout>
+
+
+
+</LinearLayout>
+
 
 
     <ListView
         android:id="@+id/findride"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:layout_weight="1"
-
-
-        />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
 
 </LinearLayout>

@@ -1,5 +1,8 @@
 package shafin.shareride;
 
+
+
+
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,13 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,28 +24,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
+
     private static final String TAG = "FindRideActivity";
     ListView listView;
-    EditText editTextSearch;
-    Button buttonSearch;
     String i;
-    Button buttonAddnow;
     public static String name;
-    TextView  textViewNewPost;
-
-
-    FirebaseAuth firebaseAuth;
-    FirebaseDatabase firebaseDatabase;
+    TextView textViewNewPost,noPostFound;
     DatabaseReference databaseReference;
-    FirebaseAuth.AuthStateListener mAuthListner;
-    String userid;
     DatabaseReference myRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,28 +45,23 @@ public class SearchActivity extends AppCompatActivity {
         actionBar.hide();
 
 
-      //
         listView = (ListView) findViewById(R.id.findride);
-        editTextSearch=(EditText)findViewById(R.id.search);
-        buttonSearch=(Button)findViewById(R.id.searchbutton);
-        buttonAddnow=(Button)findViewById(R.id.addnow);
         textViewNewPost=(TextView)findViewById(R.id.newpost);
+        noPostFound=(TextView)findViewById(R.id.noPostFound);
 
 
         final FirebaseDatabase database=FirebaseDatabase.getInstance();
         myRef = database.getReference("postRide");
 
+        textViewNewPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(SearchActivity.this,PostActivity.class);
+
+                startActivity(intent);
+            }
+        });
         showingFromDatabase();
-
-textViewNewPost.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent=new Intent(SearchActivity.this,PostActivity.class);
-
-        startActivity(intent);
-    }
-});
-
 
 
     }
@@ -84,8 +69,8 @@ textViewNewPost.setOnClickListener(new View.OnClickListener() {
     private void showingFromDatabase() {
 
 //showing
-        final List<PostInformation>messages=new LinkedList<>();
-        final ArrayAdapter<PostInformation>adapter = new ArrayAdapter<PostInformation>(
+        final List<PostInformation> messages=new LinkedList<>();
+        final ArrayAdapter<PostInformation> adapter = new ArrayAdapter<PostInformation>(
                 this, android.R.layout.simple_list_item_2, messages
         ){
             @NonNull
@@ -171,6 +156,7 @@ textViewNewPost.setOnClickListener(new View.OnClickListener() {
                     ((TextView) view.findViewById(R.id.line_d)).setVisibility(View.GONE);
                     ((TextView) view.findViewById(R.id.line_e)).setVisibility(View.GONE);
                     ((Button) view.findViewById(R.id.addnow)).setVisibility(View.GONE);
+                    
                 }
 
                 return view;
@@ -220,10 +206,4 @@ textViewNewPost.setOnClickListener(new View.OnClickListener() {
 
 
     }
-
-
-
-
-
 }
-

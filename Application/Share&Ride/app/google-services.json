@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "748421573509-htpevd0o3ioom2n4vdnffgb428puf9qk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "shafin.shareride",
+            "certificate_hash": "379fdadebd9d3f6e9a43d4f3866f24c59a3e6211"
+          }
+        },
+        {
           "client_id": "748421573509-qkciksp9sdoarhu6o5kc5i9rqf8u03hn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
