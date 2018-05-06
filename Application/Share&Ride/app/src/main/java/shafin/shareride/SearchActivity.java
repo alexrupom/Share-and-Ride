@@ -63,6 +63,7 @@ public class SearchActivity extends AppCompatActivity {
         });
         showingFromDatabase();
 
+        // noPostFound.setVisibility(View.VISIBLE);
 
     }
 
@@ -124,6 +125,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
                     i = chat.getId().toString();
+
                     databaseReference = FirebaseDatabase.getInstance().getReference().child(i);
 
                     databaseReference.addValueEventListener(new ValueEventListener() {
@@ -156,7 +158,7 @@ public class SearchActivity extends AppCompatActivity {
                     ((TextView) view.findViewById(R.id.line_d)).setVisibility(View.GONE);
                     ((TextView) view.findViewById(R.id.line_e)).setVisibility(View.GONE);
                     ((Button) view.findViewById(R.id.addnow)).setVisibility(View.GONE);
-                    
+
                 }
 
                 return view;
